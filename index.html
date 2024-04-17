@@ -33,17 +33,23 @@
         }
 
         .card-container {
+            /* 임시 */
             margin:20px auto 20px auto;
             width: 100%;
+            justify-content: center;
+            flex-wrap: wrap;
         }
 
         .card{
             /* 임시 */
+            margin: 20px auto 20px 20px;
+            float: left;
             width: 220px;
             height: 310px;
             background-image: url("card_temp.png");
             background-size: cover;
             background-color: blueviolet;
+            display: block;
         }
 
         .cheerhere {
@@ -67,7 +73,7 @@
         $(document).ready(function(){
             /*
                 card 클래스를 가진 모든 태그를 찾아서 마우스를 올리면 컨테이너가 회전하고,
-                마우스가 이탈하면 원위치로 돌아가는 style을 부여합니다.
+                마우스가 이탈하면 원위치로 돌아가도록 style을 변경하는 이벤트를 부여합니다.
             */
             $(".card").each(function(i){
                 $(this).mousemove (function(e) {
@@ -93,7 +99,22 @@
     </div>
     <div class='cardhere'>
         <div class="card-container">
-            <div class="card"></div>
+            <div class="card" alt="임시"></div>
+        </div>
+        <div class="card-container">
+            <div class="card" alt="임시"></div>
+        </div>
+        <div class="card-container">
+            <div class="card" alt="임시"></div>
+        </div>
+        <div class="card-container">
+            <div class="card" alt="임시"></div>
+        </div>
+        <div class="card-container">
+            <div class="card" alt="임시"></div>
+        </div>
+        <div class="card-container">
+            <div class="card" alt="임시"></div>
         </div>
     </div>
     <div class='cheerhere'>
