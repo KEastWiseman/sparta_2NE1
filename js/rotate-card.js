@@ -11,7 +11,7 @@ $(document).ready(function () {
             let x = e.offsetX;
             let y = e.offsetY;
             let rotateY = -1 / 5 * x + 20;
-            let rotateX = 4 / 30 * y - 20;
+            let rotateX = 1 / 30 * y - 10;
             $(this).css({ 'transform': `perspective(350px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)` }).css({ 'transition': `none` });
         });
         $(this).mouseleave(function (e) {
