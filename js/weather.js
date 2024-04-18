@@ -47,7 +47,7 @@ $(document).ready(function (){
             //         <source src="${vid}" type="video/mp4" />
             //     </video>
             let line = `
-                <img src="${vid}" alt="..." width="100" height="100" />
+                <img src="${vid}" alt="..." width="300px" height="300px"  />
             `;
 
             console.log(temp);
@@ -56,9 +56,8 @@ $(document).ready(function (){
             let time = datetime.substring(tAt, tAt+5);
 
             $('#weather').append(`
-                <p>${time} 서울 날씨:</p>
-                <p>${line}</p>
-                <p>${temp} °C</p>
+                <h2 class="weatherText">${time} 서울 날씨: ${temp} °C</h2>
+                <p class="weatherBox">${line}</p>
             `);
         },
         error: function(err) {

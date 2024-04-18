@@ -36,9 +36,10 @@
 
         // CheerMessage Button click action
         $("#cheerMessageBtn").click(async function () {
-
-            let val = $("#cheerMessageBox").val();
+            let val = $('#cheerMessageBox').val();
+            console.log(val.length);
             if (val.length > 0) {
+                console.log(val);
                 let doc = {
                     'message': $("#cheerMessageBox").val()
                 }
@@ -62,7 +63,6 @@
                 $('#cheerMessageCard').append(temp_html);
             }
         });
-
     </script>
     <script src="js/weather.js"></script>
 </head>
@@ -73,9 +73,12 @@
             <h1>
             </h1>
         </div>
-        <div class='cardhere'>
+        <div class="cardBox">
+          <div class="cardhere row">
+            
+          
             <div id="card" class="row row-cols-1 row-cols-md-5 g-5">
-                <div class="col">
+                <div class = "cardHolder col">
                     <div class="card">
                         <!-- 하부 내용 복사하셔서 임의로 수정하시면 됩니다.
                         다만 한 마디는 저 이상 늘어날 시 이미지가 깨지니 참고바랍니다. -->
@@ -105,7 +108,7 @@
 
                     </div>
                 </div>
-                <div class="col">
+                <div class = "cardHolder col">
                     <div class="card">
                         <div>
                             <img class="mem_img"
@@ -135,7 +138,7 @@
 
                     </div>
                 </div>
-                <div class="col">
+                <div class = "cardHolder col">
                     <div class="card">
                         <div>
                             <img class="mem_img"
@@ -162,7 +165,7 @@
 
                     </div>
                 </div>
-                <div class="col">
+                <div class = "cardHolder col">
                     <div class="card">
                         <div>
                             <img class="mem_img"
@@ -190,7 +193,7 @@
 
                     </div>
                 </div>
-                <div class="col">
+                <div class = "cardHolder col">
                     <div class="card">
                         <div>
                             <img class="mem_img"
@@ -217,39 +220,62 @@
 
                     </div>
                 </div>
-            </div>
+              </div>
 
         </div>
-
-
-        <div class="row">
-            <div class='cheerhere col'>
-                <h1>응원 메시지 남기기</h1>
-                <div>
-                    <div id="cheerMessageCard" class="cheerMessageCard">
-                    </div>
+      </div>
+    <div class="intdhere row">
+        <div class = "col">
+            <div class="teamIntro">
+                <h2 class="groundRules">Our Team</h2>
+                <div class="ruleBox">
+                    <p>저희 21조는 조 넘버에서 영감을 얻어 2NE1이라는 조 이름을 선정했습니다.</p>
+                    <p>2NE1처럼 '내가 제일 잘 나가'고 싶다는 열망을 스파르타 부트 캠프를 통해 이뤄보고 싶습니다.</p>
                 </div>
-                <div class="container">
-                    <div class="row">
-                        <div class="col input-group mb-3">
-                            <span>응원 메시지</span>
-                            <input placeholder="message">
-                        </div>
-                        <button id="cheerMessageBtn" type="button" class="col btn btn-primary">입력</button>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="weather" id="weather"></div>
+                
             </div>
         </div>
+        <div class = "col">
+            <div class="teamRules">
+                <h2 class="groundRules">Ground Rules</h2>
+                <div class="ruleBox">
+                    <p>1. 소통 잘 하기</p>
+                    <p>2. 점심 시간은 13:00 ~ 14:00,  저녁 시간은 18:00 ~ 19:00</p>
+                    <p>3. 피드백은 건조하게 작성하기</p>
+                    <p>4. 진물 전 검색을 우선하기</p>
+                    <p>5. 일정은 공유한다</p>
+                    <p>6. 14:00에는 각 팀원 코드 리뷰 시간 가지기</p>
+                </div>
+                
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="weather" id="weather"></div>
+        </div>
     </div>
-
+    
+    <div class="bottomBox row">
+        <div class='cheerhere col'>
+            <h2 class="groundRules">응원 메시지 남기기</h2>
+            <div>
+                <div id="cheerMessageCard" class="cheerMessageCard">
+                </div>
+            </div>
+            <div class="messageBottomBox">
+                <div class="row">
+                    <div class="col input-group mb-3">
+                        <input id="cheerMessageBox" class="cheerMessageBox" placeholder="응원의 한마디">
+                    </div>
+                    <div class="col">
+                        <button id="cheerMessageBtn" type="button" class="cheerMessageInputBtn col btn btn-dark">입력</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
     </div>
-
-
-
-
+  </div>
 </body>
 
 </html>

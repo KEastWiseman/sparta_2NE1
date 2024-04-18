@@ -12,17 +12,14 @@ $(document).ready(function () {
             let x = e.offsetX;
             let y = e.offsetY;
             let rotateY = -1 / 5 * x + 20;
-            let rotateX = 1 / 30 * y - 10;
+            let rotateX = 4 / 30 * y - 20;
             $(this).css({ 'transform': `perspective(350px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)` }).css({ 'transition': `none` });
         });
         $(this).mouseleave(function (e) {
-            $(this).css({ 'transform': `perspective(350px) rotateX(0deg) rotateY(0deg)` }).css({ 'transition': `ease 1s` })
-
+            $(this).css({ 'transform': `perspective(350px) rotateX(0deg) rotateY(0deg)` }).css({ 'transition': `ease 1s` });
         });
-        
-        $(this).click(async function () {
+        $(this).click(async function() {
             window.open("popup2.html", "card", "width=600, height=500, left=400, top=300");
-        });
-
+        })
     });
 });
