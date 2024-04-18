@@ -7,58 +7,122 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <title>Document</title>
+    <title>2NE1</title>
     <link rel="stylesheet" href="css/mystyle.css">
     <script src="js/rotate-card.js"></script>
+
+    <script type="module">
+        // Firebase SDK 라이브러리 가져오기
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js";
+        import { getFirestore } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+        import { collection, addDoc } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+        import { getDocs } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+
+
+        // Firebase 구성 정보 설정
+        const firebaseConfig = {
+            apiKey: "AIzaSyB2BsgnMnfMpE8lKmCKP-5064-SLk9Ypu8",
+            authDomain: "sparta-2df4b.firebaseapp.com",
+            projectId: "sparta-2df4b",
+            storageBucket: "sparta-2df4b.appspot.com",
+            messagingSenderId: "346413333838",
+            appId: "1:346413333838:web:1cef67a1559d0e2d30f21f",
+            measurementId: "G-WK7QLFVY9P"
+        };
+
+        // Firebase 인스턴스 초기화
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+        // CheerMessage Button click action
+        $("#cheerMessageBtn").click(async function () {
+
+            let val = $("#cheerMessageBox").val();
+            if (val.length > 0) {
+                let doc = {
+                    'message': $("#cheerMessageBox").val()
+                }
+                await addDoc(collection(db, "CheerMessage"), doc);
+            }
+            window.location.reload();
+        })
+
+        // Get CheerMessages
+        let docs = await getDocs(collection(db, "CheerMessage"));
+        docs.forEach((doc) => {
+            let row = doc.data();
+            let message = row['message'];
+            if (message.length > 0) {
+                console.log(message.length)
+                let temp_html = `
+                <div class = "cheerMessage">
+                    ${message}
+                </div>
+                `;
+                $('#cheerMessageCard').append(temp_html);
+            }
+        });
+
+    </script>
 </head>
 
 <body>
-    <div class='bannerhere'>
-        <h1>
-            2NE1
-        </h1>
-    </div>
-    <div class='cardhere'>
-        <div id="card" class="row row-cols-1 row-cols-md-5 g-5">
-            <div class="col">
-                <div class="card">
-                </div>
+    <div class="container-fluid">
+        <div class='bannerhere'>
+        </div>
+        <div class='intdhere row'>
+            <div class="teamIntro col">
+                팀 소개
             </div>
-            <div class="col">
-                <div class="card">
-                </div>
+            <div class="teamRules col">
+                팀 규칙
             </div>
-            <div class="col">
-                <div class="card">
+        </div>
+        <div class='cardhere'>
+            <div id="card" class="row row-cols-1 row-cols-md-5 g-5">
+                <div class="col">
+                    <div class="card">
+                    </div>
                 </div>
-            </div>
-            <div class="col">
-                <div class="card">
+                <div class="col">
+                    <div class="card">
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card">
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card">
 
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card">
+                    </div>
                 </div>
             </div>
-            <div class="col">
-                <div class="card">
+
+        </div>
+        <div class="row">
+            <div class='cheerhere col'>
+                <h1>응원 메시지 남기기</h1>
+                <div>
+                    <div id="cheerMessageCard" class="cheerMessageCard">
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col input-group mb-3">
+                            <span>응원 메시지</span>
+                            <input placeholder="message">
+                        </div>
+                        <button id="cheerMessageBtn" type="button" class="col btn btn-primary">입력</button>
+                    </div>
                 </div>
             </div>
         </div>
-
-    </div>
-    <div class='cheerhere'>
-        <h1>
-            cheer here
-        </h1>
-
-    </div>
-    <div class='intdhere'>
-        <h1>
-            introduce here
-        </h1>
-    </div>
-    <div class='grulehere'>
-        <h1>
-            rule here
-        </h1>
+        
     </div>
 
 

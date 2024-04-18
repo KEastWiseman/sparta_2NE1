@@ -1,4 +1,4 @@
-@import url('폰트URL');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap');
 
 * {
     font-family: "Noto Sans KR", sans-serif;
@@ -23,15 +23,49 @@
 .cheerhere {
     width: 80%;
     height: 400px;
-    margin: 0 10% 0 10%;
+    margin: 0px auto 0px auto;
     background-color: burlywood;
+}
+
+.cheerMessageCard{
+    height: 200px;
+    overflow-y: scroll;
+    background-color : black
+}
+
+.cheerMessage{
+    padding : 5px;
+    border-bottom: 1px;
+    border-color : red;
+    color : white;
+    
+}
+
+.cheerMessageBox{
+    width: 80%;
+    height: 200px;
+    background-color : yellow;
+}
+
+.cheerMessageInputBtn{
+    width: 10%;
+    height: 50px;
+    background-color : blue;
 }
 
 .intdhere {
     width: 80%;
     height: 300px;
-    margin: 0 10% 0 10%;
+    margin: 0px auto 0px auto;
     background-color: coral;
+}
+
+.teamIntro{
+    background-color : green;
+}
+
+.teamRules{
+    background-color : red;
 }
 
 .card {
