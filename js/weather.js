@@ -6,10 +6,21 @@ const DETAIL = false;
 const METRIC = true;
 const URL = `http://dataservice.accuweather.com/forecasts/v1/hourly/1hour/${LOCATION_KEY}/?apikey=${API_KEY}&language=${LOCALE}&details=${DETAIL}&metric=${METRIC}`;
 
-$('#weather').append(`<span>10도</span>`);
+const SUNNY = "img/sunny.gif";
+const RAINY = "img/rainy.gif";
+const CLOUDY = "img/cloudy.gif";
+const HALF_SUNNY = "img/halfsunny.gif";
+const HEAT = "img/heat.gif";
+const COLD = "img/cold.gif";
+const WINDY = "img/windy.gif";
+const NIGHT = "img/night.gif";
 
-function loadWeather() {
-    // 페이지 로드 시 기상 정보를 받아옵니다
+// html이 준비되면 실행합니다.
+$(document).ready(function (){
+    /* 
+        ajax GET 으로 AccuWeather URL을 통해 날씨 정보를 받아옵니다.
+        이후 시간, 날씨, 온도 정보를 추출하고 id가 weather인 태그에 추가합니다.
+    */
     $.ajax({
         url: URL,
         type:"GET",
@@ -17,8 +28,27 @@ function loadWeather() {
             console.log(res);
             let data = res[0];
             let datetime = data["DateTime"];
-            let state = data["IconPhrase"];
             let temp = data["Temperature"]["Value"];
+            let state = data["WeatherIcon"];
+            
+            let vid = '';
+            if (state <= 3) vid = SUNNY;
+            else if (state <= 6 || state == 21) vid = HALF_SUNNY;
+            else if (state <= 11 || state == 23) vid = CLOUDY;
+            else if (state <= 18) vid = RAINY;
+            else if (state <= 20) vid = CLOUDY;
+            else if (state < 29) vid = RAINY;
+            else if (state == 30) vid = HEAT;
+            else if (state == 31) vid = COLD;
+            else if (state == 32) vid = WINDY;
+            else vid = NIGHT;
+
+            // <video autoplay muted loop>
+            //         <source src="${vid}" type="video/mp4" />
+            //     </video>
+            let line = `
+                <img src="${vid}" alt="..." width="100" height="100" />
+            `;
 
             console.log(temp);
 
@@ -26,8 +56,8 @@ function loadWeather() {
             let time = datetime.substring(tAt, tAt+5);
 
             $('#weather').append(`
-                <p>${time}</p>
-                <p>${state}</p>
+                <p>${time} 서울 날씨:</p>
+                <p>${line}</p>
                 <p>${temp} °C</p>
             `);
         },
@@ -35,20 +65,4 @@ function loadWeather() {
             console.log(err);
         }
     })
-    /*
-    const xhttp = new XMLHttpRequest();
-    xhttp.onload = function() {
-        let data = this.response;
-        console.log(data);
-        console.log(typeof(data));
-        let time = data["DateTime"];
-        let state = data["IconPhrase"];
-
-        console.log(time);
-        console.log(state);
-        $('#w1').append('');
-    }
-    xhttp.open("GET", URL);
-    xhttp.send();
-    */
-}
+})
