@@ -18,6 +18,8 @@ $(document).ready(function () {
         $(this).mouseleave(function (e) {
             $(this).css({ 'transform': `perspective(350px) rotateX(0deg) rotateY(0deg)` }).css({ 'transition': `ease 1s` });
         });
-
+        $(this).click(async function() {
+            window.open("popup2.html", "card", "width=600, height=500, left=400, top=300");
+        })
     });
 });

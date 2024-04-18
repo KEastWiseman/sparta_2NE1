@@ -4,7 +4,6 @@
     font-family: "Noto Sans KR", sans-serif;
 }
 
-
 .bannerhere {
     width: 100%;
     height: 500px;
@@ -16,16 +15,15 @@
 .cardhere {
     width: 80%;
     height: 350px;
-    margin: 10px auto 100px auto;
+    margin: 0px auto 100px auto;
     padding : 20px;
     background-color: #ffffff;
-    
 }
 
 .cardHolder{
     width: 100%;
     height: 100%;
-    margin:0 auto;
+    margin-top: 10px;
     display: flex;
     justify-content: center;
 }
@@ -61,13 +59,13 @@
 }
 
 .cheerMessageBox{
-    margin : 15px auto 10px auto;
-    width: 450px;
+    margin : 15px auto 10px 20px;
+    width: 70%;
     height: 40px;
 }
 
 .cheerMessageInputBtn{
-    width: 10px;
+    width: 30%;
     height: 50px;
     margin : 10px auto 10px auto;
 }
@@ -75,7 +73,7 @@
 .intdhere {
     width: 80%;
     height: 300px;
-    margin : 0px auto 100px auto;
+    margin : 0px auto 0px auto;
     background-color: white;
 }
 
@@ -89,7 +87,7 @@
 
 .teamRules{
     width : 100%;
-    height : 100%;
+    height : 90%;
     margin: 5px 5px 5px 10px;
     background-color: black;
     color : white
@@ -107,20 +105,37 @@
     height : 100%;
     padding : 10px;
     color : black;
-    background-color: #D0D3D4;
+    background-color: white;
 
 }
 
 .card {
     width : 90%;
     height : 90%;
-    margin-top: 5%;
+    margin-top: 100px;
     background-image: url("https://blog.kakaocdn.net/dn/bigI9d/btsGJcSn4nB/5kByKBPe1DxbWXA81C9Ts0/img.png");
     background-size : cover;
     background-position : center;
 }
 
+.weatherBox{
+    width : 100%;
+    height: 400px;
+    margin : 20px auto auto 20px;
+    background-color: green;
+}
+
 .weather {
     /* 임시 */
-    width: 50%;
+    width: 100%;
+    height: 100%;
+}
+
+.weatherText{
+    margin : 5px auto auto 10px;
+    color :black;
+}
+
+.weatherBox{
+    background-color: white;
 }
