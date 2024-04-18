@@ -14,7 +14,11 @@ function loadWeather() {
     xhttp.onload = function() {
         let data = this.responseText;
         console.log(data);
-        
+        let time = data["DateTime"];
+        let state = data["IconPhrase"];
+
+        console.log(time);
+        console.log(state);
         $('#w1').append('');
     }
     xhttp.open("GET", URL);
