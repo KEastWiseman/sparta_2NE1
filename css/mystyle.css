@@ -74,11 +74,14 @@
 }
 
 .card {
-    background-image: url("https://blog.kakaocdn.net/dn/bigI9d/btsGJcSn4nB/5kByKBPe1DxbWXA81C9Ts0/img.png");
-    background-size: cover;
+    overflow: hidden;
     width: 214px;
     height: 340px;
     
+}
+
+.mem_img {
+    object-fit: cover;
 }
 
 .weather {
