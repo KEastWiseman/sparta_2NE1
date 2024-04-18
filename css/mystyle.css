@@ -21,6 +21,11 @@
     background-color: aquamarine;
 }
 
+.card-overlay {
+    /* 임시 */
+    background:radial-gradient();
+}
+
 .cheerhere {
     width: 80%;
     height: 400px;
