@@ -8,6 +8,8 @@ $(document).ready(function () {
         마우스가 이탈하면 원위치로 돌아가도록 style을 변경하는 이벤트를 부여합니다.
     */
     $(".card").each(function (i) {
+        
+        
         $(this).mousemove(function (e) {
             let x = e.offsetX;
             let y = e.offsetY;
@@ -19,7 +21,11 @@ $(document).ready(function () {
             $(this).css({ 'transform': `perspective(350px) rotateX(0deg) rotateY(0deg)` }).css({ 'transition': `ease 1s` });
         });
         $(this).click(async function() {
-            window.open("popup2.html", "card", "width=600, height=500, left=400, top=300");
+            let sendData = {
+                'id' : $(this).attr('id')
+            }
+            localStorage.setItem('sendData', JSON.stringify(sendData));
+            window.open("popup2.html", "card", "width=300, height=400, left=400, top=300");
         })
     });
 });
