@@ -1,0 +1,144 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap');
+
+* {
+    font-family: "Noto Sans KR", sans-serif;
+}
+
+.bannerhere {
+    width: 100%;
+    height: 250px;
+    background-image: url(https://blog.kakaocdn.net/dn/dlB9pB/btsGLD9KT9v/LeEL0HffX9XevmkAglX0w1/img.png);
+    background-size: cover;
+    background-position: center;
+}
+
+.cardhere {
+    width: 80%;
+    height: 350px;
+    margin: 0px auto 100px auto;
+    padding : 20px;
+    background-color: #ffffff;
+}
+
+.cardHolder{
+    width: 264px;
+    height: 340px;
+    margin-top: 10px;
+    /* display: flex; */
+    justify-content: center;
+}
+
+.card-overlay {
+    background:radial-gradient();
+}
+
+.bottomBox {
+    width: 80%;
+    height: 400px;
+    margin : 30px auto 30px auto;
+}
+
+.cheerhere {
+    width: 50%;
+    height: 400px;
+    margin: 0px auto 0px auto;
+}
+
+.cheerMessageCard{
+    height: 200px;
+    overflow-y: scroll;
+    background-color : white
+}
+
+.cheerMessage{
+    margin-left: 30px;
+    padding-top : 5px;
+    border-color: #666362;
+    color : black;
+    
+}
+
+.cheerMessageBox{
+    margin : 15px auto 10px 20px;
+    width: 70%;
+    height: 40px;
+}
+
+.cheerMessageInputBtn{
+    width: 30%;
+    height: 50px;
+    margin : 10px auto 10px auto;
+}
+
+.intdhere {
+    width: 80%;
+    height: 300px;
+    margin : 0px auto 0px auto;
+    background-color: white;
+}
+
+.teamIntro{
+    width :100%;
+    height : 100%;
+    margin: 5px 5px 5px 10px;
+    background-color: #666362;
+    color : white;
+}
+
+.teamRules{
+    width : 100%;
+    height : 90%;
+    margin: 5px 5px 5px 10px;
+    background-color: #666362;
+    color : white
+}
+
+.groundRules{
+    padding : 10px;
+    color : white;
+    background-color : #666362;
+
+}
+
+.ruleBox{
+    width: 100%;
+    height : 100%;
+    padding : 10px;
+    color : black;
+    background-color: white;
+
+}
+
+.card {
+    overflow: hidden;
+    width : 214px;
+    height : 340px;
+    background-size : cover;
+    background-position : center;
+}
+
+.weatherBox{
+    width : 100%;
+    height: 400px;
+    margin : 20px auto auto 20px;
+    background-color: green;
+}
+
+.mem_img {
+    object-fit: cover;
+}
+
+.weather {
+    /* 임시 */
+    width: 100%;
+    height: 100%;
+}
+
+.weatherText{
+    margin : 5px auto auto 10px;
+    color :black;
+}
+
+.weatherBox{
+    background-color: white;
+}

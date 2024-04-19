@@ -4,73 +4,276 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style>
-        @import url('폰트URL');
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <title>2NE1</title>
+    <link rel="stylesheet" href="css/mystyle.css">
+    <script src="js/rotate-card.js"></script>
 
-        * {
-            font-family: "Noto Sans KR", sans-serif;
-        }
+    <script type="module">
+        // Firebase SDK 라이브러리 가져오기
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js";
+        import { getFirestore } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+        import { collection, addDoc } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+        import { getDocs } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
 
 
-        .bannerhere {
-            width: 100%;
-            height: 360px;
-            background-color: green;
-            color: white;
-            background-image: url(https://drive.usercontent.google.com/download?id=1FSLSqJOeIxQEh11RGjXm7gXeuIXqUxnW&export=view&authuser=0);
-            background-size: cover;
-            background-position: center;
-        }
+        // Firebase 구성 정보 설정
+        const firebaseConfig = {
+            apiKey: "AIzaSyB2BsgnMnfMpE8lKmCKP-5064-SLk9Ypu8",
+            authDomain: "sparta-2df4b.firebaseapp.com",
+            projectId: "sparta-2df4b",
+            storageBucket: "sparta-2df4b.appspot.com",
+            messagingSenderId: "346413333838",
+            appId: "1:346413333838:web:1cef67a1559d0e2d30f21f",
+            measurementId: "G-WK7QLFVY9P"
+        };
 
-        .cardhere {
-            width: 100%;
-            height: 500px;
-            background-color: aquamarine;
-        }
+        // Firebase 인스턴스 초기화
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
 
-        .cheerhere {
-            width: 80%;
-            height: 400px;
-            margin: 0 10% 0 10%;
-            background-color: burlywood;
-        }
+        // CheerMessage Button click action
+        $("#cheerMessageBtn").click(async function () {
+            let val = $('#cheerMessageBox').val();
+            console.log(val.length);
+            if (val.length > 0) {
+                console.log(val);
+                let doc = {
+                    'message': $("#cheerMessageBox").val()
+                }
+                await addDoc(collection(db, "CheerMessage"), doc);
+            }
+            window.location.reload();
+        })
 
-        .intdhere {
-            width: 80%;
-            height: 300px;
-            margin: 0 10% 0 10%;
-            background-color: coral;
-        }
-    </style>
+        // Get CheerMessages
+        let docs = await getDocs(collection(db, "CheerMessage"));
+        docs.forEach((doc) => {
+            let row = doc.data();
+            let message = row['message'];
+            if (message.length > 0) {
+                console.log(message.length)
+                let temp_html = `
+                <div class = "cheerMessage">
+                    ${message}
+                </div>
+                `;
+                $('#cheerMessageCard').append(temp_html);
+            }
+        });
+    </script>
+    <script src="js/weather.js"></script>
 </head>
 
 <body>
-    <div class='bannerhere'>
-        <h1>
-            2NE1
-        </h1>
+    <div class="container-fluid">
+        <div class='bannerhere'>
+            <h1>
+            </h1>
+        </div>
+        <div class="cardBox">
+            <div id="card" class="cardhere row">
+                <div class="cardHolder col">
+                    <div class="card" id = "cardID_1">
+                        <!-- 하부 내용 복사하셔서 임의로 수정하시면 됩니다.
+                        다만 한 마디는 저 이상 늘어날 시 이미지가 깨지니 참고바랍니다. -->
+                        <div>
+                            <img class="mem_img"
+                                src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FHI9fI%2FbtsGKc6qwA2%2FkwPHjdwC4AcyAb79RS4161%2Fimg.png" width="214px" height="340px">
+                        </div>
+                        <div style="font-size: 26px;">
+                            <div
+                                style="position: absolute;bottom: 22%;left: 3%;color:white; font-size: 125%; font-weight: bolder; text-shadow: -3px 0px black, 0px 3px black, 3px 0px black, 0px -3px black;">
+                                구남욱
+                            </div>
+                            <div
+                                style="position: absolute;bottom: 16%;left: 3%;color:white; font-size: 50%; font-weight: bold; text-shadow: -1px 0px black, 0px 1px black, 1px 0px black, 0px -1px black;">
+                                MBTI : INFP
+                            </div>
+                            <div
+                                style="position: absolute;bottom: 10.5%;left: 3%;color:white; font-size: 50%; font-weight: bold; text-shadow: -1px 0px black, 0px 1px black, 1px 0px black, 0px -1px black;">
+                                TMI : 1일 1식 소식가
+                            </div>
+                            <div
+                                style="position: absolute;bottom: 5%;left: 3%;color:white; font-size: 50%; font-weight: bold; text-shadow: -1px 0px black, 0px 1px black, 1px 0px black, 0px -1px black;">
+                                한 마디 : 코딩 너무 어렵고 힘들어요
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="cardHolder col">
+                    <div class="card" id = "cardID_2">
+                        <div>
+                            <img class="mem_img"
+                                src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FBuGQM%2FbtsGKs2q7kP%2FenhI6amDNry3Da4I8dz6hk%2Fimg.jpg"
+                                width="214px" ; height="340px" ;>
+                        </div>
+                        <div style="font-size: 26px;">
+                            <div
+                                style="position: absolute;bottom: 22%;left: 3%;color:white; font-size: 125%; font-weight: bolder; text-shadow: -3px 0px black, 0px 3px black, 3px 0px black, 0px -3px black;">
+                                김동균
+                            </div>
+                            <div
+                                style="position: absolute;bottom: 16%;left: 3%;color:white; font-size: 50%; font-weight: bold; text-shadow: -1px 0px black, 0px 1px black, 1px 0px black, 0px -1px black;">
+                                MBTI : INTP
+                            </div>
+                            <div
+                                style="position: absolute;bottom: 10.5%;left: 3%;color:white; font-size: 50%; font-weight: bold; text-shadow: -1px 0px black, 0px 1px black, 1px 0px black, 0px -1px black;">
+                                TMI : 미국 원어민 호소인
+                            </div>
+                            <div
+                                style="position: absolute;bottom: 5%;left: 3%;color:white; font-size: 50%; font-weight: bold; text-shadow: -1px 0px black, 0px 1px black, 1px 0px black, 0px -1px black;">
+                                한 마디 : 열심히 하겠습니다! 화이팅!
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="cardHolder col">
+                    <div class="card" id = "cardID_3">
+                        <div>
+                            <img class="mem_img"
+                                src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fua8CJ%2FbtsGJTst4zZ%2FsfVcceFvVGQnYh3lTK14j0%2Fimg.jpg"
+                                width="214px" height="340px">
+                        </div>
+                        <div style="font-size: 26px;">
+                            <div
+                                style="position: absolute;bottom: 22%;left: 3%;color:white; font-size: 125%; font-weight: bolder; text-shadow: -3px 0px black, 0px 3px black, 3px 0px black, 0px -3px black;">
+                                김동현
+                            </div>
+                            <div
+                                style="position: absolute;bottom: 16%;left: 3%;color:white; font-size: 50%; font-weight: bold; text-shadow: -1px 0px black, 0px 1px black, 1px 0px black, 0px -1px black;">
+                                MBTI : INTP
+                            </div>
+                            <div
+                                style="position: absolute;bottom: 10.5%;left: 3%;color:white; font-size: 50%; font-weight: bold; text-shadow: -1px 0px black, 0px 1px black, 1px 0px black, 0px -1px black;">
+                                TMI : 카페인 중독자
+                            </div>
+                            <div
+                                style="position: absolute;bottom: 5%;left: 3%;color:white; font-size: 50%; font-weight: bold; text-shadow: -1px 0px black, 0px 1px black, 1px 0px black, 0px -1px black;">
+                                한 마디 : 내일도 해가 뜬다!
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="cardHolder col">
+                    <div class="card" id = "cardID_4">
+                        <div>
+                            <img class="mem_img"
+                                src="https://blog.kakaocdn.net/dn/bjYhyT/btsGL3gaOnP/mu3vBZuc2FWZfqKSUbJ180/img.jpg"
+                                width="214px" height="340px">
+                        </div>
+                        <div style="font-size: 26px;">
+                            <div
+                                style="position: absolute;bottom: 22%;left: 3%;color:white; font-size: 125%; font-weight: bolder; text-shadow: -3px 0px black, 0px 3px black, 3px 0px black, 0px -3px black;">
+                                문경주
+                            </div>
+                            <div
+                                style="position: absolute;bottom: 16%;left: 3%;color:white; font-size: 50%; font-weight: bold; text-shadow: -1px 0px black, 0px 1px black, 1px 0px black, 0px -1px black;">
+                                MBTI : ENTJ
+                            </div>
+                            <div
+                                style="position: absolute;bottom: 10.5%;left: 3%;color:white; font-size: 50%; font-weight: bold; text-shadow: -1px 0px black, 0px 1px black, 1px 0px black, 0px -1px black;">
+                                TMI : 롤토체스 그랜드마스터
+                            </div>
+                            <div
+                                style="position: absolute;bottom: 5%;left: 3%;color:white; font-size: 45%; font-weight: bold; text-shadow: -1px 0px black, 0px 1px black, 1px 0px black, 0px -1px black;">
+                                한 마디 : 노베이스지만 열심히 하겠습니다!
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+                <div class="cardHolder col">
+                    <div class="card" id = "cardID_5">
+                        <div>
+                            <img class="mem_img"
+                                src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fcp76lM%2FbtsGJOELHWM%2FOHuAlmvpbDEwQ8FqM5MPP0%2Fimg.jpg"
+                                width="214px" height="340px">
+                        </div>
+                        <div style="font-size: 26px;">
+                            <div
+                                style="position: absolute;bottom: 22%;left: 3%;color:white; font-size: 125%; font-weight: bolder; text-shadow: -3px 0px black, 0px 3px black, 3px 0px black, 0px -3px black;">
+                                박홍균
+                            </div>
+                            <div
+                                style="position: absolute;bottom: 16%;left: 3%;color:white; font-size: 50%; font-weight: bold; text-shadow: -1px 0px black, 0px 1px black, 1px 0px black, 0px -1px black;">
+                                MBTI : INFP
+                            </div>
+                            <div
+                                style="position: absolute;bottom: 10.5%;left: 3%;color:white; font-size: 50%; font-weight: bold; text-shadow: -1px 0px black, 0px 1px black, 1px 0px black, 0px -1px black;">
+                                TMI : 강아지 애호가
+                            </div>
+                            <div
+                                style="position: absolute;bottom: 5%;left: 3%;color:white; font-size: 43%; font-weight: bold; text-shadow: -1px 0px black, 0px 1px black, 1px 0px black, 0px -1px black;">
+                                한 마디 : 아는게 하나도 없지만 모두 화이팅!
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+        <div class="intdhere row">
+            <div class="col">
+                <div class="teamIntro">
+                    <h2 class="groundRules">Our Team</h2>
+                    <div class="ruleBox">
+                        <p>저희 21조는 조 넘버에서 영감을 얻어 2NE1이라는 조 이름을 선정했습니다.</p>
+                        <p>2NE1처럼 '내가 제일 잘 나가'고 싶다는 열망을 스파르타 부트 캠프를 통해 이뤄보고 싶습니다.</p>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col">
+                <div class="teamRules">
+                    <h2 class="groundRules">Ground Rules</h2>
+                    <div class="ruleBox">
+                        <p>1. 소통 잘 하기</p>
+                        <p>2. 점심 시간은 13:00 ~ 14:00, 저녁 시간은 18:00 ~ 19:00</p>
+                        <p>3. 피드백은 건조하게 작성하기</p>
+                        <p>4. 진물 전 검색을 우선하기</p>
+                        <p>5. 일정은 공유한다</p>
+                        <p>6. 14:00에는 각 팀원 코드 리뷰 시간 가지기</p>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="weather" id="weather"></div>
+            </div>
+        </div>
+
+        <div class="bottomBox row">
+            <div class='cheerhere col'>
+                <h2 class="groundRules">응원 메시지 남기기</h2>
+                <div>
+                    <div id="cheerMessageCard" class="cheerMessageCard">
+                    </div>
+                </div>
+                <div class="messageBottomBox">
+                    <div class="row">
+                        <div class="col input-group mb-3">
+                            <input id="cheerMessageBox" class="cheerMessageBox" placeholder="응원의 한마디">
+                        </div>
+                        <div class="col">
+                            <button id="cheerMessageBtn" type="button"
+                                class="cheerMessageInputBtn col btn btn-dark">입력</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
     </div>
-    <div class='cardhere'>
-        <h1>
-            card here
-        </h1>
-
-    </div>
-    <div class='cheerhere'>
-        <h1>
-            cheer here
-        </h1>
-
-    </div>
-    <div class='intdhere'>
-        <h1>
-            introduce here
-        </h1>
-    </div>
-
-
-
 </body>
 
 </html>
