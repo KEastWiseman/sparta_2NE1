@@ -1,5 +1,5 @@
 // 임시
-const API_KEY = "7GQPSFLXnMq7OvxBydVHwlBYjPprOswg";
+const API_KEY = "1k22OKuvuqhdKEvBZGL5tRonPsqO28Az"; //1k22OKuvuqhdKEvBZGL5tRonPsqO28Az
 const LOCATION_KEY = "226081";
 const LOCALE = "en-us"; // ko-kr
 const DETAIL = false;
