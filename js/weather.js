@@ -4,7 +4,7 @@ const LOCATION_KEY = "226081";
 const LOCALE = "en-us"; // ko-kr
 const DETAIL = false;
 const METRIC = true;
-const URL = `http://dataservice.accuweather.com/forecasts/v1/hourly/1hour/${LOCATION_KEY}/?apikey=${API_KEY}&language=${LOCALE}&details=${DETAIL}&metric=${METRIC}`;
+const URI = `http://dataservice.accuweather.com/forecasts/v1/hourly/1hour/${LOCATION_KEY}/?apikey=${API_KEY}&language=${LOCALE}&details=${DETAIL}&metric=${METRIC}`;
 
 const SUNNY = "img/sunny.gif";
 const RAINY = "img/rainy.gif";
@@ -22,7 +22,7 @@ $(document).ready(function (){
         이후 시간, 날씨, 온도 정보를 추출하고 id가 weather인 태그에 추가합니다.
     */
     $.ajax({
-        url: URL,
+        url: URI,
         type:"GET",
         success: function(res) {
             console.log(res);
